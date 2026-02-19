@@ -1,21 +1,24 @@
 import { motion } from 'framer-motion'
 import { Rocket, Zap, Briefcase } from 'lucide-react'
 import HeroMascot from '../assets/hero_mascot_final.png'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export default function Hero() {
+    const isMobile = useIsMobile()
+
     return (
         <section id="home" className="relative min-h-[90vh] flex items-center pt-32 md:pt-20 overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute top-20 right-0 w-[800px] h-[800px] bg-purple-600/30 rounded-full blur-[120px] mix-blend-screen animate-pulse" />
+                <div className={`absolute top-20 right-0 w-[800px] h-[800px] bg-purple-600/30 rounded-full blur-[120px] mix-blend-screen ${isMobile ? '' : 'animate-pulse'}`} />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-600/20 rounded-full blur-[100px] mix-blend-screen" />
             </div>
 
             <div className="container mx-auto px-4 z-10 grid md:grid-cols-2 gap-12 items-center">
                 {/* Text Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-left"
                 >
@@ -49,28 +52,29 @@ export default function Hero() {
                     transition={{ duration: 1, delay: 0.2 }}
                     className="relative h-full min-h-[400px] md:min-h-[500px] flex items-center justify-center mt-10 md:mt-0"
                 >
-                    {/* Pulsing Glow Effect */}
+                    {/* Pulsing Glow Effect - static on mobile */}
                     <motion.div
-                        animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.5, 0.2] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        animate={isMobile ? {} : { scale: [1, 1.5, 1], opacity: [0.2, 0.5, 0.2] }}
+                        transition={isMobile ? {} : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         className="absolute z-0 w-[500px] h-[500px] bg-orange-500/40 rounded-full blur-[100px]"
+                        style={isMobile ? { opacity: 0.3 } : undefined}
                     />
 
-                    {/* Placeholder for 3D Asset */}
+                    {/* Mascot - static on mobile */}
                     <motion.div
-                        initial={{ y: 0, rotate: 0 }}
-                        animate={{
+                        initial={isMobile ? undefined : { y: 0, rotate: 0 }}
+                        animate={isMobile ? {} : {
                             y: [-30, 30, -30],
                             rotateX: [0, 5, 0, -5, 0],
                             rotateY: [0, 10, 0, -10, 0],
                             scale: [1, 1.05, 1]
                         }}
-                        transition={{
+                        transition={isMobile ? {} : {
                             duration: 5,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
-                        whileHover={{ scale: 1.15, transition: { duration: 0.2 } }}
+                        whileHover={isMobile ? {} : { scale: 1.15, transition: { duration: 0.2 } }}
                         className="relative z-10 w-full max-w-[400px] md:max-w-[550px] aspect-square flex items-center justify-center cursor-pointer perspective-1000"
                     >
                         <img src={HeroMascot} alt="Growth Mascot" className="w-full h-auto drop-shadow-2xl" />

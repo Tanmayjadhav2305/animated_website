@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 import MashaMascot from '../assets/masha_mascot.png'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export default function Contact() {
+    const isMobile = useIsMobile()
+
     return (
         <section id="contact" className="py-20 container mx-auto px-4 relative">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/20 rounded-full blur-[100px] -z-10" />
@@ -10,9 +13,10 @@ export default function Contact() {
             <div className="grid md:grid-cols-2 gap-12 items-start">
                 {/* Text Side */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: isMobile ? 0 : -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: isMobile ? 0.4 : 0.6 }}
                     className="relative bg-purple-900/50 p-10 rounded-3xl backdrop-blur-sm border border-white/10"
                 >
                     {/* Masha Mascot beside the text block */}
@@ -49,9 +53,10 @@ export default function Contact() {
 
                 {/* Form Side */}
                 <motion.form
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: isMobile ? 0 : 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: isMobile ? 0.4 : 0.6 }}
                     className="relative"
                 >
                     <div className="bg-white text-purple-900 p-8 rounded-3xl shadow-2xl relative overflow-hidden z-10">

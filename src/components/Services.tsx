@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-// import { Rocket, ShoppingCart, TrendingUp } from 'lucide-react'
 import RocketIcon from '../assets/rocket_icon_v3.png'
 import CartIcon from '../assets/cart_icon.png'
 import ChartIcon from '../assets/chart_icon_v3.png'

@@ -21,9 +21,9 @@ export default function Portfolio() {
                     <div className="inline-block bg-orange-500 text-white text-sm font-bold px-3 py-1 rounded-full mb-4">OUR WORK</div>
                     <h2 className="text-5xl md:text-7xl font-display font-black">Selected <br />Projects</h2>
                 </div>
-                <button className="hidden md:flex items-center gap-2 text-lg font-bold hover:text-orange-400 transition-colors group">
+                <a href="#portfolio" className="hidden md:flex items-center gap-2 text-lg font-bold hover:text-orange-400 transition-colors group">
                     View All Work <ArrowRight className="transform group-hover:translate-x-1 transition-transform" />
-                </button>
+                </a>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -62,9 +62,9 @@ export default function Portfolio() {
             </div>
 
             <div className="mt-8 flex justify-center md:hidden">
-                <button className="flex items-center gap-2 text-lg font-bold hover:text-orange-400 transition-colors group">
+                <a href="#portfolio" className="flex items-center gap-2 text-lg font-bold hover:text-orange-400 transition-colors group">
                     View All Work <ArrowRight className="transform group-hover:translate-x-1 transition-transform" />
-                </button>
+                </a>
             </div>
         </section>
     )
